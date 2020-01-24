@@ -1,6 +1,11 @@
 # RestAPI for Rock Paper Scissor in Java
 A backend REST-API for Rock Paper Scissors built in Java using Gradle and Spring
 
+## Installation
+To run the server, you need Java JDK or JRE and Gradle
+
+Follow the guide on https://gradle.org/install/ on how to install
+
 ## Starting the server
 Run the server from the application folder with 
 
