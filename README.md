@@ -21,7 +21,7 @@ Some nice best practices may be found at https://phauer.com/2016/testing-restful
 
 Blog post about SpringBoot integration testing https://blog.jayway.com/2014/07/04/integration-testing-a-spring-boot-application/
 
-##Usage
+## Usage
 The API supports the following REST calls
 ```
 POST /games
@@ -33,9 +33,9 @@ POST /games/{uuid}/join
 POST /games/{uuid}/move
 ```
 
-###The post API demand the request body as JSON
+### The post API demand the request body as JSON
 
-####CREATE GAME
+#### CREATE GAME
 `POST /games` 
 requires a name in JSON format as request body
 creates a new game and returns a string object with the UUID of the created game
@@ -44,7 +44,7 @@ Example request body for creating a game with `POST /games`:
 
 `{"name":"playername"}` 
 
-####GET GAME
+#### GET GAME
 `GET /games/{uuid}`
 returns the UUID for the new game as well as the players in the game and their status.
 
@@ -53,12 +53,12 @@ If both players have made their move, it returns the game status instead of play
 Example URL for getting a game with UUID e27cf7fa-592f-4c7b-9413-54a0c5660c97 with `GET /games/{uuid}`:
 
 `http://localhost:8080/games/e27cf7fa-592f-4c7b-9413-54a0c5660c97` 
-####JOIN GAME
+#### JOIN GAME
 `POST /games/{uuid}/join`
 requires a name in JSON format, 
 returns a message saying if player joined the game, maximum 2 players per game, names has to be distinct
 
-####MAKE MOVE
+#### MAKE MOVE
 `POST /games/{uuid}/move`
 requires a name and a move in JSON format, the move has to be rock, paper or scissor, not caps sensitive.
 
@@ -70,12 +70,12 @@ Example request body for joining and making a move with `POST /games{uuid}/move`
 
 `{"name":"playername", "move":"rock"}` 
 
-##PLAYING
+## PLAYING
 You may for example use Postman to access the API
 
 To give a JSON request body, open the Body tab, choose raw from the radio buttons, and use the dropdown to the right to change from Text to JSON
 
-###TODO
+### TODO
 - More tests
 - Try-catches
 - Return JSON 
@@ -142,7 +142,7 @@ GET	/api/games/{id} där id kan vara ett UUID.
 Returnerar ett givet spels nuvarande tillstånd med ingående
 attribut. Tänk på vilka attribut som ska visas för vem och när.
 
-####POST	/api/games
+#### POST	/api/games
 Skapar ett nytt spel. Ange spelarnamn i request-body:
 ```
 {
@@ -164,7 +164,7 @@ Gör ett drag. Ange namn och drag i request-body:
 "move":	"Rock"
 }
 ```
-##Plattformar
+## Plattformar
 ### Java
 Om du bygger en Java-lösning ska Apache
 Maven eller Gradle användas för att bygga och paketera
