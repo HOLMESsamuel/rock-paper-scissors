@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.UUID;
 import java.util.stream.Collectors;
 
+
 class Game {
     private final UUID uuid;
     private boolean gameIsFull;
@@ -38,27 +39,17 @@ class Game {
     }
 
     private String decideWinner(Player player1, Player player2) {
-        Move p1Move = player1.getPlayerMove();
-        Move p2Move = player2.getPlayerMove();
-        if (p1Move.beats(p2Move))
-            return String.format("%s wins, with %s over %s's %s!",
-                    player1.getPlayerName(),
-                    p1Move,
-                    player2.getPlayerName(),
-                    p2Move);
-        if (p2Move.beats(p1Move))
-            return String.format("%s wins, with %s over %s's %s!",
-                    player2.getPlayerName(),
-                    p2Move,
-                    player1.getPlayerName(),
-                    p1Move);
-        return "Draw!";
+        if (player1.getPlayerMove().beats(player2.getPlayerMove()))
+            return ResponseUtil.winsOver(player1,player2);
+        else if (player2.getPlayerMove().beats(player1.getPlayerMove()))
+            return ResponseUtil.winsOver(player2,player1);
+        return ResponseUtil.draw();
     }
 
     void setResultOfGameIfPossible(){
         if (getResultOfGame() == null &&
                 !getPlayerMoves().contains(null) &&
-                getPlayerMoves().size() >= 2)
+                getPlayerMoves().size() == 2)
             setResultOfGame();
     }
 

@@ -18,8 +18,7 @@ class ResponseUtil {
         game.setResultOfGameIfPossible();
 
         if (game.getResultOfGame() != null) {
-            response.append("\n");
-            response.append(game.getResultOfGame());
+            response.append("\n").append(game.getResultOfGame());
         } else {
             for (Player player : players) {
                 response.append(hasMadeMove(player));
@@ -33,20 +32,19 @@ class ResponseUtil {
     }
 
     static String gameCreated(UUID uuid) {
-        return(String.format("Game created with uuid: %s\nShare the UUID with your opponent", uuid.toString()));
+        return (String.format("Game created with uuid: %s\nShare the UUID with your opponent", uuid.toString()));
     }
 
-    static String gameIsFull(){
+    static String gameIsFull() {
         return "Game is full.";
     }
 
-    static String gameJoined(UUID uuid, Game game){
+    static String gameJoined(UUID uuid, Game game) {
         StringBuilder response = new StringBuilder();
         response.append(String.format("Joined Game with uuid: %s", uuid));
         response.append("\nCurrent players: ");
         for (String name : game.getPlayerNames()) {
-            response.append(name);
-            response.append(" ");
+            response.append(name).append(" ");
         }
         response.append("\n");
         return response.toString();
@@ -56,7 +54,7 @@ class ResponseUtil {
         return "You need to supply your name";
     }
 
-    static String playerAlreadyInGame(){
+    static String playerAlreadyInGame() {
         return "Player is already in game.";
     }
 
@@ -67,18 +65,30 @@ class ResponseUtil {
         return String.format("\n%s has not made their move", player.getPlayerName());
     }
 
-    static String notValidMove(String move){
+    static String notValidMove(String move) {
         if (move == null)
             return "You must supply your move";
         else
-            return "Your must be either ROCK, PAPER or SCISSOR";
+            return "Your move must be either ROCK, PAPER or SCISSOR";
     }
 
-    static String moveAlreadyMade(String name){
+    static String moveAlreadyMade(String name) {
         return String.format("Player %s has already made a move", name);
     }
 
-    static  String moveAdded(String move){
+    static String moveAdded(String move) {
         return String.format("Move %s added", move);
+    }
+
+    static String winsOver(Player playerA, Player playerB) {
+        return String.format("%s wins, with %s over %s's %s!",
+                playerA.getPlayerName(),
+                playerA.getPlayerMove(),
+                playerB.getPlayerName(),
+                playerB.getPlayerMove());
+    }
+
+    static String draw() {
+        return "Draw!";
     }
 }

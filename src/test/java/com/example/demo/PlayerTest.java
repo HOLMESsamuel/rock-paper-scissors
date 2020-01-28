@@ -19,6 +19,16 @@ class PlayerTest {
     }
 
     @Test
+    void makePlayerNullName() {
+        assertThrows(IllegalArgumentException.class, () -> new Player(null));
+    }
+
+    @Test
+    void makePlayerEmptyName() {
+        assertThrows(IllegalArgumentException.class, () -> new Player(""));
+    }
+
+    @Test
     void getPlayerMoveNull() {
         assertNull(testPlayer.getPlayerMove());
     }

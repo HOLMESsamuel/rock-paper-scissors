@@ -11,7 +11,7 @@ import java.util.stream.*;
 
 //https://spring.io/guides/gs/rest-service/
 
-@RestController
+@RestController // Annotated with @Controller and @ResponseBody, where @Controller is a specialization of @Component
 public class GameController {
 
     private static List<Game> games = new ArrayList<>();
@@ -40,7 +40,7 @@ public class GameController {
         UUID uuid = newGame.getUUID();
         String playerName = body.get("name");
 
-        if (playerName != null) {
+        if (playerName != null && !playerName.isEmpty()) {
             newGame.addPlayer(playerName);
             games.add(newGame);
             return ResponseUtil.gameCreated(uuid);

@@ -1,11 +1,22 @@
 package com.example.demo;
 
+/**
+ * @author fredrikfloven
+ */
 class Player {
     private final String playerName;
     private Move playerMove;
 
-    Player(String name){
-        this.playerName = name;
+    /**
+     * @param name Name of player
+     * @throws IllegalArgumentException If name of player is null or an empty string
+     */
+    Player(String name) throws IllegalArgumentException{
+        if (name != null && !name.isEmpty())
+            this.playerName = name;
+        else {
+            throw new IllegalArgumentException("Player name cannot be null or empty");
+        }
     }
 
     String getPlayerName(){
