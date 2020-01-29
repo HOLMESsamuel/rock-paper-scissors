@@ -7,7 +7,7 @@ class ResponseUtil {
 
 
     static String gameFound(Game game) {
-        StringBuilder response = new StringBuilder("Game found"); //Not sync, i.e. not thread-safe, but fast and efficient
+        StringBuilder response = new StringBuilder("Game found"); //Async, i.e. not thread-safe, but fast and efficient
 
         response.append("\nPlayers: ");
         List<Player> players = game.getPlayers();

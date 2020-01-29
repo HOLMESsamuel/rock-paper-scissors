@@ -10,7 +10,7 @@ import java.util.stream.Collectors;
 class Game {
     private final UUID uuid;
     private boolean gameIsFull;
-    private List<Player> playerList = Collections.synchronizedList(new ArrayList<>());
+    private List<Player> playerList = Collections.synchronizedList(new ArrayList<>()); // Synch, i.e. thread-safe
     private String resultOfGame;
 
     Game() {
@@ -39,9 +39,11 @@ class Game {
     }
 
     private String decideWinner(Player player1, Player player2) {
-        if (player1.getPlayerMove().beats(player2.getPlayerMove()))
+        Move player1Move = player1.getPlayerMove();
+        Move player2Move = player2.getPlayerMove();
+        if (player1Move.beats(player2Move))
             return ResponseUtil.winsOver(player1,player2);
-        else if (player2.getPlayerMove().beats(player1.getPlayerMove()))
+        else if (player2Move.beats(player2Move))
             return ResponseUtil.winsOver(player2,player1);
         return ResponseUtil.draw();
     }

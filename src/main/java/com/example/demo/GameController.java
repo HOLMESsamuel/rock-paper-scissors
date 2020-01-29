@@ -16,6 +16,13 @@ public class GameController {
 
     private static List<Game> games = new ArrayList<>();
 
+    /**
+     * Uses stream, more expressive and terse than the old school for loop
+     * More functional, stronger affinity with functions, encourage less mutability, more scalable
+     * Worse performance than looping through an array though
+     * @param uuid Unique Identifier of the game being searched for
+     * @return The first found game if it exists, else null
+     */
     private Game getGame(UUID uuid) {
         List<Game> gameList = games.stream()
                 .filter(game -> game.getUUID().equals(uuid))
